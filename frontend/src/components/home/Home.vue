@@ -39,12 +39,13 @@ export default {
     name: 'Home',
     components: { PageTitle, Stat },
     data: function(){
-        stat = {}
+        return {
+            stat: {}
+        }
     },
     methods: {
         getStats(){
-            axios.get(`${baseApiUrl}/stats`)
-                .then(res => this.stat = res.data)
+            axios.get(`${baseApiUrl}/stats`).then(res => this.stat = res.data)
         }
     },
     mounted(){
@@ -54,5 +55,9 @@ export default {
 </script>
 
 <style>
-    
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 </style>
